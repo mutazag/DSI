@@ -102,18 +102,19 @@ meetings$Day
 hist(meetings$Day)
 barchart(meetings$WeekDay)
 ggplot(meetings, aes(x=WeekDay)) + geom_bar() + scale_fill_discrete(drop=FALSE) + scale_x_discrete(drop=FALSE)
-ggplot(meetings, aes(x=Day)) + geom_bar() + 
-  scale_fill_discrete(drop=FALSE,direction = -1) + 
-  scale_x_discrete(drop=FALSE, labels= meetings$WeekDay) + 
-  scale_x_continuous(drop=FALSE, labels = meetings$WeekDay)+ scale
-  
+
+
+# meeting over days of month 
+
+# prepare labels for x axis
 rr <- range(meetings$Start)
-labels <- data_frame(Date = seq.POSIXt(as.POSIXct(rr[1]), as.POSIXct(rr[2]), by="day"))
-labels %>% mutate(Day = day(Date), WeekDay <- weekdays)
-labels <- meetings %>% group_by(Day) %>% mutate(DD = first(WeekDay)) %>% select(Day, DD) %>% ungroup() %>% distinct()
+labels <- data_frame(Date = seq.Date(as.Date(rr[1]), as.Date(rr[2])+1, by="day"))
+labels <- labels %>% mutate(Day = day(Date), WeekDay = weekdays(Date))
+# labels <- meetings %>% group_by(Day) %>% mutate(DD = first(WeekDay)) %>% select(Day, DD) %>% ungroup() %>% distinct()
 
-ggplot(meetings, aes(x=Day)) + geom_bar() + scale_x_continuous(labels = labels$DD)
-
-
-meetings$WeekDay
+ggplot(meetings, aes(x=Day)) + geom_bar() +
+  scale_x_continuous(breaks=labels$Day, labels=labels$WeekDay) +
+  theme(axis.text.x = element_text(angle=90)) +
+  scale_y_discrete(limits=0:50)
+  
 
