@@ -25,24 +25,28 @@ head(meetings)
 glimpse(meetings)
 
 
-# set col1 name to Subject
+# set column names. Subject had a unicode character in it, this will help solve
+# the issue
 colnames(meetings) <- c("Subject","Start",  "End",    "Duration")
 
-ex_list <- as.vector(c("bday", "birthday","rent", "anniversary"))
+# events in the calendar include types other than meetings, e.g birthday, rent
+# and anniversary reminders. Cancelled meetings also need to be removed, and
+# events with the term WWC are not meetings that i attend so they also need to
+# be removed
 reg_list <- "bday|birthday|^rent|anniversary|wwc|^canceled"
-ex_list2 <- c("samer", "rent", "anniversary")
-meetings$Subject <- tolower(meetings$Subject)
-meetings %>% filter(stringr::str_detect(Subject, ex_list))
-meetings %>% filter(Subject %in% "samer") %>% tail()
-sublist <- meetings %>% filter(!str_detect(Subject, reg_list))
+meetings <- meetings %>% filter(!str_detect(Subject, reg_list))
 
-filter(.data = meetings, stringr::str_detect(meetings$Subject, ex_list))
-
+# dates are in the formate of "Fri 27/04/2018 2:00 PM", this will be parsed to a
+# date time, and them team duration in minutes will be calculated as the
+# difference in time between end and start time.
 lubridate::parse_date_time2("Fri 27/04/2018 2:00 PM", "dmdyHMp")
 meetings$Start <- parse_date_time2(meetings$Start, "dmdyHMp")
 meetings$End <- parse_date_time2(meetings$End, "dmdyHMp")
 meetings$DurationMin <- as.numeric(difftime(meetings$End, meetings$Start, units = "mins" ))
 
+
+# outliers are found as events that are longer than 24 hrs (1440 mins), outliers
+# will be removed
 summary(meetings$DurationMin)
 meetings$DurationMin
 ggplot(meetings, aes(as.numeric(DurationMin))) + geom_boxplot()
