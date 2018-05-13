@@ -13,9 +13,9 @@ library(dplyr)
 library(tidyr)
 library(readr)
 library(lubridate)
-library(tidyverse)
+# library(tidyverse)
 library(stringr)
-
+library(ggplot2)
 
 meetings <- read_csv("./raw/meetings.csv")
 
@@ -72,6 +72,11 @@ meetings$DurationMin <- as.numeric(difftime(meetings$End, meetings$Start, units 
 # will be removed
 summary(meetings$DurationMin)
 hist(meetings$DurationMin)
+
+meetings %>% ggplot(aes(x=day(Start), y=DurationMin, colour =DurationMin)) +
+  geom_point(position="jitter") + 
+  scale_x_continuous(breaks = 1:30)#, labels = 1:30, minor_breaks = NULL)
+
 meetings <- meetings %>% filter(!DurationMin >= 1440)
 hist(meetings$DurationMin)
 # noticed events with duration > 300 
@@ -85,7 +90,12 @@ range(meetings$DurationMin)
 summary(meetings$DurationMin)
 # meetings %>% filter(DurationMin < 30) check for dates that outside of date
 # range, start < Apr 1 or > Apr 31
-meetings %>% filter(Start > dmy("30/04/2018"))
+meetings %>% filter(Start < dmy("01/04/2018"))
+meetings %>% filter(End > dmy("30/04/2018"))
+
+# remove meetings that start after midnight and finish before 7am
+meetings <- meetings %>% filter( !(hour(Start) >= 0 & hour(End) <= 7))
+meetings %>% filter(hour(Start) <= 1)
 
 
 
@@ -93,9 +103,9 @@ meetings %>% filter(Start > dmy("30/04/2018"))
 
 # now i want to explore the data, so first i will see how many meetings i was
 # having a day, this will be a count on number of rows grouped by day of month
-
+day_names <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 meetings$WeekDay <- factor(weekdays(meetings$Start), 
-                              levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")) 
+                              levels = day_names) 
 meetings$Day <- day(meetings$Start)
 meetings$WeekDay
 meetings$Day
@@ -117,4 +127,56 @@ ggplot(meetings, aes(x=Day)) + geom_bar() +
   theme(axis.text.x = element_text(angle=90)) +
   scale_y_discrete(limits=0:50)
   
+#### summarise meetings ####
 
+meetings %>% group_by(Day, WeekDay) %>% 
+  summarise(N = n(), 
+            FirstStart = min(Start), 
+            FirstStartHour = hour(FirstStart), 
+            LastEnd = max(End),
+            LastEndHour = hour(LastEnd),
+            AvgMeetingDuration = mean(DurationMin),
+            TotalMeetingTime = sum(DurationMin),
+            WorkingDayDuration = as.numeric(difftime(LastEnd, FirstStart, units = "mins" ))) %>% 
+  ungroup() %>% 
+  mutate(PctTimeInMeetings = TotalMeetingTime / max(TotalMeetingTime))-> meetings_summary
+
+meetings_summary %>% 
+  ggplot(aes(x=Day, y=PctTimeInMeetings)) + geom_bar(stat="identity")
+
+
+write_csv(meetings_summary, "meetings_summary.csv")
+
+
+#### meetings observations ####
+boxplot(meetings_summary$TotalMeetingTime)
+summary(meetings_summary$TotalMeetingTime)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 30.0   142.5   195.0   243.8   371.2   540.0 
+# 75% of the of the days is spent in meetings longer than 2:20 hrs to 6.20 hrs
+# this for days where i recoreded metings 
+summary(meetings_summary$N)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.00    2.00    3.00    3.65    5.00    9.00 
+# on working days i will have on average 4 meetings
+# with most of the days (25% to 75%) (read how to interpet summary)
+# i will have between 2 to five meetings
+
+# to reduce times in meetings (to improve productivity) i need to target few changes: 
+# start by participating in shorter meetings and less meetings in a day
+
+summary(meetings_summary$FirstStartHour)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 8.00    9.75   10.00   10.95 11.25      16.00 
+# 1st qut start hour is 9:45 and median start is 10:00, this makes
+# sense as i usually need to drop the kids to school and come back home by 9 am
+# to start work. hence most of my meetings in the morning will only start after
+# 9am
+
+summary(meetings_summary$LastEndHour)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 14.0    15.0    16.5    16.9    18.0    21.0 
+
+# on avg i seem to wrap up my meetings at 4:30, with 3rd qu of 18:00 (what does
+# 3rd qut mean) there are instances where my meetings wrapped up at 9pm those
+# are mostly days when i had to attend evening classes
