@@ -110,7 +110,7 @@ meetings$Day <- day(meetings$Start)
 meetings$WeekDay
 meetings$Day
 hist(meetings$Day)
-barchart(meetings$WeekDay)
+
 ggplot(meetings, aes(x=WeekDay)) + geom_bar() + scale_fill_discrete(drop=FALSE) + scale_x_discrete(drop=FALSE)
 
 
@@ -142,7 +142,9 @@ meetings %>% group_by(Day, WeekDay) %>%
   mutate(PctTimeInMeetings = TotalMeetingTime / max(TotalMeetingTime))-> meetings_summary
 
 meetings_summary %>% 
-  ggplot(aes(x=Day, y=PctTimeInMeetings)) + geom_bar(stat="identity")
+  ggplot(aes(x=WeekDay, y=PctTimeInMeetings)) + 
+  geom_boxplot()
+  geom_bar(stat="identity")
 
 
 write_csv(meetings_summary, "meetings_summary.csv")
