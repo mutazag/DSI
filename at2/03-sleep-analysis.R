@@ -11,28 +11,43 @@ library(lubridate)
 sleep <- read_csv("sleep_clean.csv",locale=readr::locale(tz="Australia/Sydney"))
 range(sleep$end)
 
-# add a column for record day, use the sleep end time to calucate the record day
-df <- sleep %>% mutate( day = as.Date(end) ) %>% arrange(userid,day)
+
+#### test for duplicates ####
+
+sleep %>% duplicated() %>% sum()
+
+# 1 duplicate was found. 
+
+# remove duplicates, add a column for record day, use the sleep end time to calucate the record day
+df <- sleep %>% 
+  unique() %>%
+  mutate( day = as.Date(end,tz="Australia/Sydney") ) %>% arrange(userid,day)
 
 df$userid <- as.factor(df$userid)
 
 #### observations ####
 # users with more than one sleep entry per day 
 
-df %>% 
+df_summary <- df %>% 
   group_by(userid,day) %>% 
   summarise(N = n()) %>% 
-  ungroup()-> df_summary
+  ungroup()
 
 range(df_summary$day)
-df_summary %>% ggplot(aes(x=day, y=N, fill=userid)) + 
-  geom_bar(stat="identity") +
+df %>% ggplot(aes(x=day, fill=userid)) + 
+  geom_bar() +
   scale_x_date(date_breaks = "1 day", 
                date_labels = "%b %d", 
                expand = c(0,0), 
                minor_breaks = NULL)  +
   scale_y_continuous(minor_breaks = NULL) +
-  theme(axis.text.x = element_text(angle=90)) 
+  theme(axis.text.x = element_text(angle=90)) + 
+  labs(title = "Sleep Entries by Day", 
+       subtitle ="group by User", 
+       x = 'Day', 
+       y = 'Number of Entries', 
+       fill = "User"
+  )
 # most users started collecting data regularly on Apr 01, everyone stopped
 # collecting data afer Apr 30, few users collected multiple entries per day. We
 # will need to go deeper in the data to deermine how to handle the multiple
@@ -41,21 +56,21 @@ df_summary %>% ggplot(aes(x=day, y=N, fill=userid)) +
 # also checking if there was duplicate entries
 
 
-#### test for duplicates ####
 
-df_summary %>% duplicated() %>% sum()
-
-# no duplicates where found. 
 
 #### bed time ####
 
 # when do users go to bed, rounded down to the closest 1 hr
 
-df_gotobed <- df %>% mutate(go.to.bed = hour(start), wake.up = hour(end))
+df <- df %>% mutate(go.to.bed = hour(start), wake.up = hour(end))
 # hour(start + hours(0))-0)
-df_gotobed$go.to.bed
+df %>% ggplot(aes(go.to.bed)) + geom_bar()
 
-df_gotobed %>% ggplot(aes(x = go.to.bed, fill=userid)) + 
+df <- df %>% mutate(night.sleep = case_when(
+  (go.to.bed >=9 & go.to.bed <= 17) ~ FALSE, 
+  TRUE~ TRUE)) 
+
+df %>% ggplot(aes(x = go.to.bed, fill=userid)) + 
   geom_bar(position = "stack") + ylim(0,80) +
   scale_x_continuous(breaks = 0:23, 
                      labels = 0:23, 
@@ -67,15 +82,14 @@ df_gotobed %>% ggplot(aes(x = go.to.bed, fill=userid)) +
         y = "Number of records", 
         fill = "User")+theme_minimal()
 
-df_gotobed %>% ggplot(aes(x = wake.up, fill=userid)) + 
+df %>% ggplot(aes(x = wake.up, fill=userid)) + 
   geom_bar(position = "stack") + ylim(0,80) + 
   scale_x_continuous(breaks = 0:23, 
                      labels = 0:23, 
                      minor_breaks = NULL, limits = c(-1,24)) + 
-   labs( title = "And they wake up?", 
+   labs( title = "And what time do they wake up?", 
         subtitle = "count of sleep end by hour", 
-        caption = paste0("..."), 
-        x = "wake up time (hr)", 
+        x = "Wake up time (hr)", 
         y = "Number of records", 
         fill = "User")+theme_minimal()
 
@@ -90,6 +104,12 @@ boxplot(df_gotobed$go.to.bed)
 
 
 #### why did user 6 stay up late till 4 am? ####
+df %>% filter(go.to.bed == 4 )
+# two entries
+# user 6 went to bed after four on the morning of Friday Apr 20. The night before was the deadline to submit DSI assignment, and I worked all night into the next morning to turn it. i did submit it at 4 am the on Friday, 4 hrs later fater the deadline. 
+
+df %>% filter(userid==6, go.to.bed == 4) 
 
 
-
+#### save summary sleep data ####
+ write_csv(df, "./sleep_summary.csv")

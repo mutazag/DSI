@@ -62,7 +62,7 @@ sleep$time.in.bed <- as.numeric(
     as.character(sleep$time.in.bed), 
     units = "mins"))
 
-#### format the skeep quality field to a numberic fraction 
+#### format the sleep quality field to a numberic fraction 
 sleep$slp.quality <- as.numeric(sub("%","",sleep$slp.quality))/100
 summary(sleep$slp.quality)
 
