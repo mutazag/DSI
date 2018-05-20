@@ -9,10 +9,12 @@ library(dplyr)
 library(lubridate)
 library(ggplot2)
 
-
+#### read mode file ####
 mood <- read_csv("./raw/group_mood_2018.05.13.csv",locale=readr::locale(tz="Australia/Sydney"))
 range(sleep$end)
 
+
+#### data set prep ####
 dataset_columns <- c("id","userid","year","date","weekday","time","mood","activities",
                     "note","key.phrase","sentiment.score","keyphrase.delimited")
 
@@ -20,45 +22,75 @@ colnames(mood) <- dataset_columns
 mood <- mood[,dataset_columns]
 mood <- mood[!is.na(mood$userid),]
 
+  mood$id <- NULL
+
 mood$mood <- factor(mood$mood, 
-                       
                        levels = c("awful","bad", "meh", "good", "rad"), 
                        ordered = TRUE)
+
 week.days <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 mood$userid <- factor(mood$userid)
 mood$weekday <- factor(mood$weekday, levels = week.days, ordered = T)
+
+mood$time <- gsub("[.]",":",mood$time)
+
+
+#### missing values #### 
+
+#### check the fields with missing data 
+mood_missing <- lapply(colnames(mood), function(c){
+
+  no_missing <- sum(is.na(mood[,c]))
+  ratio_missing <- no_missing / nrow(mood)
+  return(data.frame(colname=c, missing = no_missing, ration = ratio_missing))
+}) 
+
+as.data.frame.list(mood_missing)
+matrix(mood_missing)
+summary(mood)
+sum(is.na(mood$userid)) / nrow(sleep)
+
+
+#### number of mood entries ####
 mood %>% ggplot(aes(weekday, fill = mood)) + geom_bar()+ 
   scale_x_discrete(labels = week.days)
 
-
-mood %>% ggplot(aes(mood, fill = weekdays)) + geom_bar()+
-  scale_x_discrete()
 mood %>% ggplot(aes(userid, fill=mood) )+ geom_bar()
+
+# what are most common mood entries
 mood %>% ggplot( aes(mood, fill=userid))+ geom_bar()
 
+
+#what is the sentiment that goes with moods (average)
 mood %>% group_by(mood) %>% summarise(N = n(), sentiment = mean(sentiment.score)) -> mood_summary
+
+
 mid <- mean(mood$sentiment.score)
 mood_summary %>% ggplot(aes(x=mood, y=N, fill=sentiment)) + geom_bar(stat="identity") +
   scale_fill_gradientn(colors = rainbow(5))
   # scale_fill_gradient2(midpoint = mid, low="red", mid = "purple", high="orange")
-mood_summary %>% ggplot(aes(x=mood, y=sentiment,fill=N)) + geom_bar(stat="identity") +
-  scale_fill_gradientn(colors = rainbow(5))
-
-mood %>% 
+# mood_summary %>% ggplot(aes(x=mood, y=sentiment,fill=N)) + geom_bar(stat="identity") +
+#   scale_fill_gradientn(colors = rainbow(5))
+# 
+mood <- mood %>% 
   arrange(mood) %>%
   group_by(mood) %>%
-  mutate(sentiment.mean = mean(sentiment.score)) %>% 
+  mutate(sentiment.mean = mean(sentiment.score))
+
+
+mood %>% 
   ggplot(aes(x=mood, y=sentiment.score, fill=sentiment.mean)) +
   geom_boxplot() +
-  scale_fill_gradientn(colors = rainbow(5)) 
+  scale_fill_gradientn(colors = rainbow(5)) + 
+  stat_summary(fun.y=mean, geom="point", shape=5, size=4)
 
 
-mood_summary %>% ggplot(aes(x=mood, y=sentiment, fill=sentiment)) + 
-  geom_text(aes(label=N),hjust=0, vjust=-2)+ # label text is confisusing 
-  scale_y_continuous(breaks = 0:1, limits = 0:1) +
-  geom_bar(stat="identity")  +
-  scale_fill_gradientn(colors = rainbow(5)) +
-  theme_minimal()
+# mood_summary %>% ggplot(aes(x=mood, y=sentiment, fill=sentiment)) + 
+#   geom_text(aes(label=N),hjust=0, vjust=-2)+ # label text is confisusing 
+#   scale_y_continuous(breaks = 0:1, limits = 0:1) +
+#   geom_bar(stat="identity")  +
+#   scale_fill_gradientn(colors = rainbow(5)) +
+#   theme_minimal()
 
 library(wordcloud)
 library(tm)
@@ -93,6 +125,10 @@ wordcloud(words = names(phrases$bad), as.numeric(phrases$bad), min.freq = 1)
 wordcloud(words = names(phrases$awful), as.numeric(phrases$awful), min.freq = 1)
 
 
+mood$date <- dmy(paste(mood$date, "2018"))
+
+write_csv(mood, "mood_clean.csv")
+
 ## summarise mood by user by day 
 # example 
 # day 1, user 1 
@@ -102,3 +138,4 @@ wordcloud(words = names(phrases$awful), as.numeric(phrases$awful), min.freq = 1)
 # good.score -> 4/6 = .33
 # <mood> = count how many times a mood was record in a day  
 # <mood>.score = <mood> / sum(<mood>s)
+

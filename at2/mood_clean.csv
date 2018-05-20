@@ -1,0 +1,198 @@
+userid,year,date,weekday,time,mood,activities,note,key.phrase,sentiment.score,keyphrase.delimited,sentiment.mean
+1,2018,2018-04-03,Tuesday,20:00,awful,NA,Exhausted,NA,0.049947,NA,0.11897075
+1,2018,2018-04-06,Friday,19:17,awful,work,"Exhausted, end of the week is usually a struggle",week end,0.043855,week | end,0.11897075
+2,2018,2018-04-09,Monday,19:08,awful,work,Another person resigned today.,person,0.239062,person,0.11897075
+2,2018,2018-04-05,Thursday,18:09,awful,work,Work with some really unpleasant people.,Work,0.060922,Work,0.11897075
+6,2018,2018-04-16,Monday,20:00,awful,Study,DAM assignment due on Thursday and I haven't started yet,DAM assignment,0.5,DAM assignment,0.11897075
+2,2018,2018-04-26,Thursday,21:08,awful,work,Bad day,Bad day,0.006915,Bad day,0.11897075
+4,2018,2018-04-12,Thursday,20:45,awful,work,Stressed after work and study.,work,0.030524,work,0.11897075
+1,2018,2018-04-19,Thursday,20:00,awful,work,Exhausted at work and home,work,0.020541,work,0.11897075
+1,2018,2018-04-02,Monday,04:50,bad,kids,"Sleepless night, baby teething and day light savings killed the routine",day light savings baby teething,0.087175,day light savings | baby teething,0.08620988888888889
+2,2018,2018-04-19,Thursday,23:58,bad,work,Left work early couldn't concentrate,Left work,0.133332,Left work,0.08620988888888889
+2,2018,2018-04-18,Wednesday,19:19,bad,work,So much to do at work feeling pretty burnt out,work,0.027147,work,0.08620988888888889
+2,2018,2018-04-06,Friday,21:25,bad,work,"Interview for my team didn't go well, candidate wasn't what I was expecting. Still haven't heard back from Steph.",team candidate Interview Steph,0.195243,team | candidate | Interview | Steph,0.08620988888888889
+3,2018,2018-04-08,Sunday,20:00,bad,cleaning | study,A day of study and cleaning,day of study,0.111211,day of study,0.08620988888888889
+5,2018,2018-04-03,Tuesday,21:24,bad,NA,Had a fairly stressful day so feeling run down,stressful day,0.180355,stressful day,0.08620988888888889
+6,2018,2018-04-06,Friday,09:30,bad,work,Home printer is broken. I need to get it fixed,Home printer,0.03906,Home printer,0.08620988888888889
+6,2018,2018-03-28,Wednesday,17:45,bad,Study,Remembered how much studies I have to do,studies,0.059126,studies,0.08620988888888889
+3,2018,2018-04-17,Tuesday,21:32,bad,work | study,I have an ear ache.,ear ache,0.03365,ear ache,0.08620988888888889
+3,2018,2018-04-23,Monday,20:41,bad,work,Not a good nights sleep and a long day in the office,long day good nights sleep,0.056059,long day | good nights sleep,0.08620988888888889
+3,2018,2018-04-24,Tuesday,20:00,bad,work,Long stressful day in the office,stressful day,0.093883,stressful day,0.08620988888888889
+6,2018,2018-04-14,Saturday,20:00,bad,Study,Behind on the assignment,assignment,0.113265,assignment,0.08620988888888889
+2,2018,2018-04-27,Friday,18:00,bad,work,Supposed to have the afternoon off work but kept being pulled into work.,work afternoon,0.11344,work | afternoon,0.08620988888888889
+2,2018,2018-04-23,Monday,21:43,bad,work,"Worked until 10pm on review, was meant to be doing uni work",review uni work,0.108272,review | uni work,0.08620988888888889
+4,2018,2018-04-18,Wednesday,22:27,bad,work | study,Back from work. Need to start with my studies.,work studies,0.093657,work | studies,0.08620988888888889
+4,2018,2018-04-25,Wednesday,21:24,bad,work | travel,Tedious day.,Tedious day,0.006915,Tedious day,0.08620988888888889
+4,2018,2018-04-27,Friday,09:25,bad,study,Data collection is painful.,Data collection,0.049994,Data collection,0.08620988888888889
+4,2018,2018-04-28,Saturday,11:34,bad,study,Data collection is painful.,Data collection,0.049994,Data collection,0.08620988888888889
+2,2018,2018-04-21,Saturday,23:57,meh,movies | shopping | good meal,Brunch & errands,Brunch,0.753245,Brunch,0.40954135185185186
+2,2018,2018-04-16,Monday,0:21,meh,work,Long day at work,Long day,0.058239,Long day,0.40954135185185186
+2,2018,2018-04-13,Friday,18:00,meh,work,Not as far into assignment as I would like.,assignment,0.222257,assignment,0.40954135185185186
+2,2018,2018-04-12,Thursday,21:36,meh,work,Workshop all day. Good chat with Project Manager got some much needed validation,Project Manager Good chat needed validation,0.886085,Project Manager | Good chat | needed validation,0.40954135185185186
+2,2018,2018-04-10,Tuesday,22:52,meh,work | study,"In class data session - team were one of the winners on the right track, highlighted rigorous data hygiene methods  & clear headings and labelling of data.",labelling of data rigorous data hygiene methods class data session - team clear headings right track winners,0.230107,labelling of data | rigorous data hygiene methods | class data session - team | clear headings | right track | winners,0.40954135185185186
+2,2018,2018-04-08,Sunday,18:04,meh,study,"Working on assignment, worried about the deadline",assignment deadline,0.029628,assignment | deadline,0.40954135185185186
+2,2018,2018-04-04,Wednesday,18:23,meh,work,"First brainstorming clinic went pretty well. Loads to do for work and uni next few weeks, stressful times ahead!",uni weeks stressful times work,0.246666,uni | weeks | stressful times | work,0.40954135185185186
+3,2018,2018-04-02,Monday,20:00,meh,study,Day in the library writing up an assignment,library Day,0.275353,library | Day,0.40954135185185186
+3,2018,2018-04-03,Tuesday,20:55,meh,work | study,Average day at work followed by uni,Average day,0.23375,Average day,0.40954135185185186
+3,2018,2018-04-04,Wednesday,20:03,meh,work,Long day in the office,Long day,0.07982,Long day,0.40954135185185186
+3,2018,2018-04-05,Thursday,20:01,meh,work | study,Ok day at work followed by some study.,work Ok day,0.215021,work | Ok day,0.40954135185185186
+4,2018,2018-04-04,Wednesday,20:58,meh,work,Exhausted after working in a restaurant. Have to start with my studies for the day.,studies day restaurant,0.077905,studies | day | restaurant,0.40954135185185186
+5,2018,2018-04-24,Tuesday,17:51,meh,NA,OK day but looking forward to a day off,OK day,0.92294,OK day,0.40954135185185186
+5,2018,2018-04-23,Monday,21:09,meh,NA,Long day,Long day,0.124529,Long day,0.40954135185185186
+5,2018,2018-04-20,Friday,21:53,meh,NA,Fairly busy day at work,busy day,0.865372,busy day,0.40954135185185186
+5,2018,2018-04-19,Thursday,19:22,meh,NA,Felt like a long day so average mood,long day average mood,0.053185,long day | average mood,0.40954135185185186
+5,2018,2018-04-17,Tuesday,17:24,meh,NA,"Work, class",Work,0.05137,Work,0.40954135185185186
+5,2018,2018-04-10,Tuesday,21:20,meh,work,Long day so feeling tired,Long day,0.281393,Long day,0.40954135185185186
+5,2018,2018-04-09,Monday,20:50,meh,NA,Feeling a bit tired today so feeling average,NA,0.01415,NA,0.40954135185185186
+5,2018,2018-04-02,Monday,19:56,meh,NA,Had a very busy day lifting and moving things so I'm feeling quite tired,things busy day,0.114812,things | busy day,0.40954135185185186
+6,2018,2018-04-02,Monday,13:52,meh,shopping,Weekly grocery shopping,Weekly grocery shopping,0.819734,Weekly grocery shopping,0.40954135185185186
+6,2018,2018-04-02,Monday,09:37,meh,work,NA,NA,0.753245,NA,0.40954135185185186
+6,2018,2018-03-29,Thursday,20:00,meh,relax,NA,NA,0.753245,NA,0.40954135185185186
+6,2018,2018-03-28,Wednesday,08:13,meh,NA,NA,NA,0.753245,NA,0.40954135185185186
+3,2018,2018-04-09,Monday,21:08,meh,work | sport,Average day at work. A swim in the afternoon.,Average day work,0.224034,Average day | work,0.40954135185185186
+3,2018,2018-04-10,Tuesday,20:34,meh,work | study,Not so good day at work followed by evening at uni.,work evening,0.10613,work | evening,0.40954135185185186
+3,2018,2018-04-14,Saturday,21:40,meh,family,"Looking at houses in the morning, change car oil and maintenance in the afternoon.",car oil morning maintenance,0.5,car oil | morning | maintenance,0.40954135185185186
+3,2018,2018-04-15,Sunday,21:48,meh,family | study,Breakfast with the family followed by a study day.,family study day,0.865062,family | study day,0.40954135185185186
+3,2018,2018-04-16,Monday,21:22,meh,work | sport,Busy day in the office but OK. A swim in the afternoon. Feeling tired.,Busy day office swim,0.5,Busy day | office | swim,0.40954135185185186
+3,2018,2018-04-18,Wednesday,22:08,meh,NA,Day off work sick.,Day,0.096696,Day,0.40954135185185186
+3,2018,2018-04-19,Thursday,20:08,meh,work,Longish day in the office. Had afternoon tea with kids,Longish day office,0.186133,Longish day | office,0.40954135185185186
+3,2018,2018-04-20,Friday,20:00,meh,work | study,Feeling OK. Average day at work. Spent evening putting together a technical presentation,Average day work evening,0.18959,Average day | work | evening,0.40954135185185186
+3,2018,2018-04-22,Sunday,20:26,meh,study,Spent most of the day at the library,day library,0.744376,day | library,0.40954135185185186
+6,2018,2018-04-26,Thursday,20:00,meh,Study,Working late today!,NA,0.019801,NA,0.40954135185185186
+6,2018,2018-04-24,Tuesday,20:00,meh,relax,NA,NA,0.753245,NA,0.40954135185185186
+6,2018,2018-04-23,Monday,20:00,meh,work,NA,NA,0.753245,NA,0.40954135185185186
+6,2018,2018-04-20,Friday,20:00,meh,NA,NA,NA,0.753245,NA,0.40954135185185186
+6,2018,2018-04-18,Wednesday,08:57,meh,drinking coffee,NA,NA,0.753245,NA,0.40954135185185186
+6,2018,2018-04-12,Thursday,20:00,meh,work,NA,NA,0.753245,NA,0.40954135185185186
+2,2018,2018-04-29,Sunday,18:38,meh,study,Playing around with Tableau,Tableau,0.920618,Tableau,0.40954135185185186
+2,2018,2018-04-28,Saturday,18:00,meh,NA,Hangover,Hangover,0.163974,Hangover,0.40954135185185186
+3,2018,2018-04-25,Wednesday,20:35,meh,family | study,"Dawn service, watched some of the march in the city. Study in the afternoon",Study Dawn service afternoon,0.5,Study | Dawn service | afternoon,0.40954135185185186
+3,2018,2018-04-26,Thursday,20:25,meh,work,Full day at work but OK,day,0.179192,day,0.40954135185185186
+3,2018,2018-04-27,Friday,22:57,meh,work,Another day at work,day,0.085154,day,0.40954135185185186
+3,2018,2018-04-28,Saturday,20:25,meh,shopping | family,Kids are coming down with colds,Kids,0.5,Kids,0.40954135185185186
+3,2018,2018-04-29,Sunday,20:18,meh,work | study,Spent most of the day studying with a dash of work,day dash of work,0.190929,day | dash of work,0.40954135185185186
+6,2018,2018-04-30,Monday,20:00,meh,work,NA,NA,0.753245,NA,0.40954135185185186
+1,2018,2018-04-26,Thursday,20:00,meh,work,Testing phase at project boring,Testing phase,0.187279,Testing phase,0.40954135185185186
+1,2018,2018-04-23,Monday,20:11,meh,work,Back to work. I wish to have another day off,work day,0.025364,work | day,0.40954135185185186
+1,2018,2018-04-18,Wednesday,20:00,meh,work,Tense at work,Tense,0.040274,Tense,0.40954135185185186
+1,2018,2018-04-16,Tuesday,20:47,meh,work,As always first part of the week is the busiest,week,0.697203,week,0.40954135185185186
+1,2018,2018-04-13,Sunday,20:01,meh,work,Spent all day preparing for AT1. Tired,day AT1,0.803759,day | AT1,0.40954135185185186
+1,2018,2018-04-12,Thursday,20:21,meh,sport,Went for a run. Was not practicing for long. Difficult with breathing,breathing run,0.238068,breathing | run,0.40954135185185186
+1,2018,2018-04-08,Sunday,20:00,meh,relax,Relaxed but very tired from the trip to the northern beaches. Let say overrelaxed,trip northern beaches,0.816831,trip | northern beaches,0.40954135185185186
+1,2018,2018-04-01,Sunday,20:00,good,cleaning,"A bit tired, but happy. Time change mixes up my body clock",Time change body clock,0.239796,Time change | body clock,0.7304841340206185
+1,2018,2018-04-01,Sunday,08:05,good,kids,"Morning was early my daughter was not sleeping well. However, as it is weekend i feel relax to look after kids",weekend i Morning daughter kids,0.891131,weekend i | Morning | daughter | kids,0.7304841340206185
+1,2018,2018-04-02,Monday,20:00,good,kids,Tired but happy go to bed for relax,bed,0.765671,bed,0.7304841340206185
+1,2018,2018-04-02,Monday,16:59,good,reading,"A bit tired, but after learning new tips how to do academic writing is excited on the topic",academic writing new tips topic,0.856371,academic writing | new tips | topic,0.7304841340206185
+1,2018,2018-04-07,Saturday,07:18,good,reading,Studying in a good mood and capacity,good mood,0.793444,good mood,0.7304841340206185
+2,2018,2018-04-20,Friday,18:06,good,work,"Worked from home, all day meeting with Shannon.",home day meeting,0.847912,home | day meeting,0.7304841340206185
+2,2018,2018-04-17,Tuesday,23:04,good,work | study,Long day but some good laughs with project team at work.,good laughs project team,0.773807,good laughs | project team,0.7304841340206185
+2,2018,2018-04-15,Sunday,22:34,good,study,"Assignment submitted, mini break before round 2!",Assignment mini break,0.5,Assignment | mini break,0.7304841340206185
+2,2018,2018-04-14,Saturday,18:38,good,friends | study,Assignment and dinner with friends,Assignment,0.875542,Assignment,0.7304841340206185
+2,2018,2018-04-11,Wednesday,18:13,good,work | friends,Good workshop today (with Project Team) and dinner with friends.,Project Team dinner friends,0.936651,Project Team | dinner | friends,0.7304841340206185
+2,2018,2018-04-07,Saturday,19:02,good,study,Learning lots of interesting things that work are doing in AI and tech. Opportunities to speak to global office about it.,Opportunities work AI interesting things,0.726567,Opportunities | work | AI | interesting things,0.7304841340206185
+2,2018,2018-04-03,Tuesday,23:11,good,work | study,"Work was ok today, lots to do for uni. Booked a holiday!",Work uni holiday,0.120887,Work | uni | holiday,0.7304841340206185
+2,2018,2018-04-01,Sunday,18:00,good,friends | sport,Visit with friends new baby. Run in the morning,friends new baby morning,0.909896,friends new baby | morning,0.7304841340206185
+3,2018,2018-04-01,Sunday,20:38,good,relax | good meal | family,Easter Sunday roast with family.,Easter,0.701915,Easter,0.7304841340206185
+3,2018,2018-04-06,Friday,21:41,good,work,Average day at the office but got a few things done,office Average day,0.210886,office | Average day,0.7304841340206185
+3,2018,2018-04-07,Saturday,20:34,good,relax | shopping | family,Kids sport in the morning; BBQ by the beach for dinner,BBQ morning,0.762869,BBQ | morning,0.7304841340206185
+4,2018,2018-04-01,Sunday,10:33,good,travel,Travelled a bit and jogged on a trail to Marley beach.,trail Marley beach,0.5,trail | Marley beach,0.7304841340206185
+4,2018,2018-04-02,Monday,20:05,good,movies,Movie time,Movie time,0.915821,Movie time,0.7304841340206185
+4,2018,2018-04-03,Tuesday,15:00,good,travel,Travelling to Uni.,uni,0.217832,uni,0.7304841340206185
+4,2018,2018-04-05,Thursday,11:05,good,reading,Enrolled in a few new online courses.,new online courses,0.832341,new online courses,0.7304841340206185
+4,2018,2018-04-06,Friday,13:23,good,shopping | travel,Much need break from studies.,need break,0.184008,need break,0.7304841340206185
+4,2018,2018-04-07,Saturday,08:40,good,reading,Looking forward for a block session in Uni.,block session,0.905856,block session,0.7304841340206185
+4,2018,2018-04-08,Sunday,08:39,good,sport,Played cricket. Feeling pumped-up for the rest of the day.,rest day,0.899402,rest | day,0.7304841340206185
+4,2018,2018-04-08,Sunday,15:12,good,family,Visited one of my cousins after a long time.,cousins long time,0.807937,cousins | long time,0.7304841340206185
+4,2018,2018-04-09,Monday,07:30,good,reading,Started with my uni work.,uni work,0.122458,uni work,0.7304841340206185
+5,2018,2018-04-29,Sunday,10:30,good,NA,Nice day with friends,Nice day,0.971939,Nice day,0.7304841340206185
+5,2018,2018-04-28,Saturday,21:12,good,NA,In a great mood,great mood,0.940092,great mood,0.7304841340206185
+5,2018,2018-04-27,Friday,21:13,good,NA,Productive day!,Productive day,0.991994,Productive day,0.7304841340206185
+5,2018,2018-04-26,Thursday,20:43,good,NA,Long day so feeling quite tired,Long day,0.030462,Long day,0.7304841340206185
+5,2018,2018-04-25,Wednesday,21:13,good,NA,Great surf with mates and the day off,Great surf mates,0.885915,Great surf | mates,0.7304841340206185
+5,2018,2018-04-22,Sunday,20:54,good,NA,Easy day with not too much on,Easy day,0.996069,Easy day,0.7304841340206185
+5,2018,2018-04-21,Saturday,20:00,good,NA,Had a nice relaxing day,nice relaxing day,0.989814,nice relaxing day,0.7304841340206185
+5,2018,2018-04-18,Wednesday,20:26,good,NA,Training at work and nice dinner so I'm in a good mood,nice dinner Training,0.897696,nice dinner | Training,0.7304841340206185
+5,2018,2018-04-16,Monday,20:24,good,NA,Bit weary but had a decent day and a game of squash,decent day game of squash,0.826417,decent day | game of squash,0.7304841340206185
+5,2018,2018-04-15,Sunday,20:08,good,NA,Another nice surf with a mate and a couple of beers,mate nice surf,0.934312,mate | nice surf,0.7304841340206185
+5,2018,2018-04-14,Saturday,07:04,good,NA,Had a surf in the afternoon so feeling relaxed,surf afternoon,0.852891,surf | afternoon,0.7304841340206185
+5,2018,2018-04-13,Friday,07:47,good,NA,Nice dinner with an old friend,Nice dinner,0.983278,Nice dinner,0.7304841340206185
+5,2018,2018-04-11,Wednesday,22:29,good,friends,Nice dinner,Nice dinner,0.974545,Nice dinner,0.7304841340206185
+5,2018,2018-04-08,Sunday,21:06,good,NA,I had a busy but productive day so I'm in a good mood,productive day good mood,0.957001,productive day | good mood,0.7304841340206185
+5,2018,2018-04-07,Saturday,22:07,good,NA,Woke up quite tired but had a nice snooze in the afternoon. Mood improved after that,nice snooze afternoon Mood,0.859566,nice snooze | afternoon | Mood,0.7304841340206185
+5,2018,2018-04-06,Friday,17:45,good,NA,Friday! Good mood!,Good mood,0.900073,Good mood,0.7304841340206185
+5,2018,2018-04-05,Thursday,20:50,good,NA,Fairly productive day so in a good mood,productive day good mood,0.987559,productive day | good mood,0.7304841340206185
+5,2018,2018-04-04,Wednesday,20:22,good,NA,Life is going alright!,Life,0.762828,Life,0.7304841340206185
+5,2018,2018-04-01,Sunday,21:43,good,NA,Nice day with friends followed by a long drive so in a reasonably good mood,long drive friends reasonably good mood,0.952755,long drive | friends | reasonably good mood,0.7304841340206185
+5,2018,2018-04-01,Sunday,21:43,good,NA,Nice day with friends followed by a long drive so in a reasonably good mood,long drive friends reasonably good mood,0.952755,long drive | friends | reasonably good mood,0.7304841340206185
+6,2018,2018-04-09,Monday,20:00,good,relax,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-07,Saturday,20:00,good,movies,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-06,Friday,20:00,good,good meal,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-05,Thursday,20:00,good,work,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-05,Thursday,07:50,good,drinking coffee,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-04,Wednesday,20:00,good,Study,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-03,Tuesday,20:00,good,Study,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-02,Monday,20:00,good,Study,Finished this week exercises for DAM,week exercises,0.855301,week exercises,0.7304841340206185
+6,2018,2018-04-01,Sunday,11:10,good,travel,Flying to Melbourne on Easter morning to go see my sister,Easter morning Melbourne,0.5,Easter morning | Melbourne,0.7304841340206185
+6,2018,2018-03-31,Saturday,13:26,good,relax,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-03-30,Friday,20:00,good,Study,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-03-29,Thursday,23:06,good,work,Winning is good,NA,0.996523,NA,0.7304841340206185
+6,2018,2018-03-29,Thursday,07:58,good,drinking coffee,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-03-27,Tuesday,23:07,good,Study,Good to meet the team today,team,0.989576,team,0.7304841340206185
+3,2018,2018-04-11,Wednesday,20:16,good,work | study,Fulham are up to second. Saw kids for bedtime.,kids bedtime,0.743742,kids | bedtime,0.7304841340206185
+3,2018,2018-04-12,Thursday,20:42,good,work | sport | study,Went for a swim after lunch which felt good. Finished off AT1.,swim lunch AT1,0.944816,swim | lunch | AT1,0.7304841340206185
+3,2018,2018-04-13,Friday,21:07,good,work | family,Walked James to school and lunch in the sun.,James school,0.70275,James | school,0.7304841340206185
+3,2018,2018-04-21,Saturday,22:33,good,relax | family,Day with family at local park and then down to the beach,local park Day,0.5,local park | Day,0.7304841340206185
+6,2018,2018-04-25,Wednesday,20:00,good,relax,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-22,Sunday,20:00,good,friends,Dinner with friends,Dinner,0.940855,Dinner,0.7304841340206185
+6,2018,2018-04-21,Saturday,20:00,good,relax,NA,NA,0.753245,NA,0.7304841340206185
+6,2018,2018-04-15,Sunday,17:33,good,Study,Finished my final draft and proof reading it now,final draft proof,0.926577,final draft | proof,0.7304841340206185
+6,2018,2018-04-11,Wednesday,20:00,good,relax,NA,NA,0.753245,NA,0.7304841340206185
+2,2018,2018-04-25,Wednesday,19:43,good,work | friends,"Preparing presentation, working from home, didn't get a public holiday, but dinner with friends.",public holiday home dinner friends,0.206181,public holiday | home | dinner | friends,0.7304841340206185
+2,2018,2018-04-24,Tuesday,18:30,good,work,"Pretty average day, back to back meetings.",average day meetings,0.199184,average day | meetings,0.7304841340206185
+2,2018,2018-04-22,Sunday,20:23,good,relax,"Brunch, reading and some assignment prep",Brunch,0.849276,Brunch,0.7304841340206185
+6,2018,2018-04-28,Saturday,20:00,good,good meal,Dinner with friends,Dinner,0.940855,Dinner,0.7304841340206185
+6,2018,2018-04-27,Friday,22:12,good,movies,NA,NA,0.753245,NA,0.7304841340206185
+4,2018,2018-04-10,Tuesday,10:45,good,study,After a few days search found an interesting problem to solve.,days search interesting problem,0.813298,days search | interesting problem,0.7304841340206185
+4,2018,2018-04-11,Wednesday,08:00,good,study,Started writing my assignment.,assignment,0.216179,assignment,0.7304841340206185
+4,2018,2018-04-11,Wednesday,21:23,good,work,Went to Sydney Web Analytics meetup and met new peers.,Sydney Web Analytics meetup new peers,0.5,Sydney Web Analytics meetup | new peers,0.7304841340206185
+4,2018,2018-04-13,Friday,08:25,good,sport,Went running in the morning.,morning,0.5,morning,0.7304841340206185
+4,2018,2018-04-14,Saturday,11:20,good,sport,Cricket in the morning,Cricket,0.5,Cricket,0.7304841340206185
+4,2018,2018-04-15,Sunday,09:20,good,study,Need to put a few more content to my assignnment.,content assignnment,0.751868,content | assignnment,0.7304841340206185
+4,2018,2018-04-16,Monday,08:25,good,study,Started putting thoughts for my DAM assignment,thoughts,0.228114,thoughts,0.7304841340206185
+4,2018,2018-04-17,Tuesday,22:35,good,travel,Travelling home from Uni.,NA,0.29065,NA,0.7304841340206185
+4,2018,2018-04-19,Thursday,10:25,good,study,Working on my assignment draft.,assignment draft,0.146867,assignment draft,0.7304841340206185
+4,2018,2018-04-22,Sunday,20:48,good,movies,Watched a movie after a long time.,movie long time,0.936634,movie | long time,0.7304841340206185
+4,2018,2018-04-23,Monday,15:23,good,study,Started researching on some interesting case studies.,interesting case studies,0.801166,interesting case studies,0.7304841340206185
+4,2018,2018-04-24,Tuesday,17:12,good,family,Spent some time with my family.,time,0.81701,time,0.7304841340206185
+4,2018,2018-04-26,Thursday,11:21,good,work | study,Took initiative for a project. Stressful times ahead.,initiative project,0.71075,initiative | project,0.7304841340206185
+4,2018,2018-04-27,Friday,22:45,good,movies,Watched Avengers movie.,Avengers movie,0.974741,Avengers movie,0.7304841340206185
+4,2018,2018-04-28,Saturday,20:10,good,sport,Played table-tennis with one of my colleague.,table-tennis colleague,0.5,table-tennis | colleague,0.7304841340206185
+4,2018,2018-04-29,Sunday,17:33,good,study,Started collating all the data collection source codes.,data collection source codes,0.699903,data collection source codes,0.7304841340206185
+1,2018,2018-04-29,Sunday,20:00,good,travel,Went to our favorite beach long reef :-),favorite beach long reef,0.999303,favorite beach long reef,0.7304841340206185
+1,2018,2018-04-28,Saturday,20:33,good,work,"Was working during weekend, achieved good progress",weekend good progress,0.788956,weekend | good progress,0.7304841340206185
+1,2018,2018-04-27,Friday,20:00,good,work,Work hard play hard,Work,0.235496,Work,0.7304841340206185
+1,2018,2018-04-25,Wednesday,20:00,good,sport,"Went to swimming pool, feel good",swimming pool,0.908867,swimming pool,0.7304841340206185
+1,2018,2018-04-22,Sunday,20:05,good,relax,Our favourite Long reef beach is the best in Syndey,best favourite Long reef beach,0.959439,best | favourite Long reef beach,0.7304841340206185
+1,2018,2018-04-20,Friday,21:14,good,relax,Feel better today,NA,0.891628,NA,0.7304841340206185
+1,2018,2018-04-15,Monday,20:23,good,sport,Went to the swimming pool. Feel good,swimming pool,0.927291,swimming pool,0.7304841340206185
+1,2018,2018-04-11,Wednesday,20:00,good,sport,Went to NorthSydney swimming pool. Fantastic experience every time,NorthSydney swimming pool Fantastic experience,0.970774,NorthSydney swimming pool | Fantastic experience,0.7304841340206185
+1,2018,2018-04-04,Wednesday,20:00,rad,good meal,Faboulous herring salad prepaid by my wife. Raised my mood and energy,Faboulous herring salad prepaid wife mood,0.5,Faboulous herring salad prepaid | wife | mood,0.6659433
+2,2018,2018-04-02,Monday,18:00,rad,good meal,"Easter show with my niece's. Good food, sunshine & lots of rides",sunshine lots of rides Good food,0.915258,sunshine | lots of rides | Good food,0.6659433
+4,2018,2018-04-04,Wednesday,11:31,rad,reading,Started with studying some modules for the week after a good breakfast.,week good breakfast modules,0.907826,week | good breakfast | modules,0.6659433
+5,2018,2018-04-12,Thursday,18:11,rad,NA,Great news today,Great news,0.929137,Great news,0.6659433
+6,2018,2018-04-08,Sunday,20:00,rad,NA,Big ride today,Big ride,0.5,Big ride,0.6659433
+6,2018,2018-04-19,Thursday,20:00,rad,Study,Coding for my DAM assignment,Coding,0.243737,Coding,0.6659433
+6,2018,2018-04-17,Tuesday,20:00,rad,Study,DSI is always fun!!!,DSI,0.988798,DSI,0.6659433
+6,2018,2018-04-15,Sunday,20:00,rad,Study,Just completed and submitted my AT1 assignment. What a relief!!,AT1 assignment relief,0.5,AT1 assignment | relief,0.6659433
+6,2018,2018-04-13,Friday,20:00,rad,relax,Thank god it's Friday,god,0.927311,god,0.6659433
+6,2018,2018-04-10,Tuesday,20:00,rad,Study,Data mystery box was cool,Data mystery box,0.874679,Data mystery box,0.6659433
+6,2018,2018-04-29,Sunday,20:00,rad,movies,NA,NA,0.753245,NA,0.6659433
+4,2018,2018-04-20,Friday,09:20,rad,relax,Relaxing after a hard week's work and studies.,hard week's work studies,0.190146,hard week's work | studies,0.6659433
+4,2018,2018-04-21,Saturday,17:42,rad,relax | travel,Visited Cumberland Forest Reserve.,Cumberland Forest Reserve,0.796692,Cumberland Forest Reserve,0.6659433
+4,2018,2018-04-22,Sunday,18:36,rad,friends | good meal | sport,Hanged out with friends. Had a good lunch followed by a few games of badminton.,good lunch games of badminton friends,0.987062,good lunch | games of badminton | friends,0.6659433
+1,2018,2018-04-24,Tuesday,20:00,rad,sport,"My back pain is getting better, new physio is awosome",new physio pain,0.120537,new physio | pain,0.6659433
+1,2018,2018-04-21,Saturday,22:24,rad,reading,Read a lot of articles on big data. Exciting topic!,lot of articles big data,0.947665,lot of articles | big data,0.6659433
+1,2018,2018-04-14,Saturday,20:03,rad,relax,Freshwater beach is the best,Freshwater beach,0.989947,Freshwater beach,0.6659433
+1,2018,2018-04-13,Friday,20:13,rad,relax,Friday evening is my favourite. Can relax and unwind after the busy week,evening favourite busy week,0.939667,evening | favourite | busy week,0.6659433
+1,2018,2018-04-10,Tuesday,08:42,rad,sport,"Visited physio, doctor gave me a good advice how to target back pain",good advice doctor physio,0.234632,good advice | doctor | physio,0.6659433
+1,2018,2018-04-09,Monday,20:00,rad,sport,Stretching helped me with back pain,pain,0.072527,pain,0.6659433

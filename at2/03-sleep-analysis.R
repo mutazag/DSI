@@ -28,12 +28,15 @@ df$userid <- as.factor(df$userid)
 #### observations ####
 # users with more than one sleep entry per day 
 
-df_summary <- df %>% 
-  group_by(userid,day) %>% 
-  summarise(N = n()) %>% 
+sleep_summary <- df %>% 
+  group_by(userid) %>% 
+  summarise( N = n(), first = min(day), last=max(day)) %>%
+  mutate(days_collected = difftime(last,first, units="days")) %>% 
   ungroup()
 
-range(df_summary$day)
+
+
+range(sleep_summary$day)
 df %>% ggplot(aes(x=day, fill=userid)) + 
   geom_bar() +
   scale_x_date(date_breaks = "1 day", 
@@ -43,11 +46,10 @@ df %>% ggplot(aes(x=day, fill=userid)) +
   scale_y_continuous(minor_breaks = NULL) +
   theme(axis.text.x = element_text(angle=90)) + 
   labs(title = "Sleep Entries by Day", 
-       subtitle ="group by User", 
+       # subtitle ="group by User", 
        x = 'Day', 
        y = 'Number of Entries', 
-       fill = "User"
-  )
+       fill = "User"  ) 
 # most users started collecting data regularly on Apr 01, everyone stopped
 # collecting data afer Apr 30, few users collected multiple entries per day. We
 # will need to go deeper in the data to deermine how to handle the multiple
@@ -100,7 +102,44 @@ boxplot(df_gotobed$go.to.bed)
 ## for user 6 to go to bed at 4 am
 
 
-#### day nap?? ####
+#### week day and sleep quality ####
+# having a day, this will be a count on number of rows grouped by day of month
+day_names <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+df$WeekDay <- factor(weekdays(df$day), 
+                           levels = day_names, ordered = T) 
+
+ 
+df %>% 
+  group_by(WeekDay) %>%
+  mutate(slp.quality.weekday.mean = mean(slp.quality)) %>%
+  filter(night.sleep==T) %>%
+  ggplot(aes(x=WeekDay, y=slp.quality, fill=slp.quality.weekday.mean)) + 
+  geom_boxplot() +
+  stat_summary(fun.y=mean, geom="point", shape=5, size=4) +
+  labs( title = "What is the sleep quality over the week days?", 
+        subtitle = "Night sleep only",
+        x = "Day of Week", 
+        y = "Sleep Quality", 
+        fill = "Avg Sleep Quality")+theme_minimal() +
+  scale_fill_gradient(low = "red",high = "green")
+
+
+
+df %>% 
+  group_by(userid) %>%
+  mutate(slp.quality.weekday.mean = mean(slp.quality)) %>%
+  filter(night.sleep==T) %>%
+  ggplot(aes(x=factor(userid), y=time.in.bed, fill=slp.quality.weekday.mean)) + 
+  geom_boxplot() +
+  stat_summary(fun.y=mean, geom="point", shape=5, size=4) +
+  labs( title = "What is the sleep quality over the week days?", 
+        subtitle = "Night sleep only",
+        x = "Week day", 
+        y = "Sleep Quality", 
+        fill = "Avg Sleep Quality")+theme_minimal() +
+  scale_fill_gradient(low = "red",high = "green")
+
+
 
 
 #### why did user 6 stay up late till 4 am? ####

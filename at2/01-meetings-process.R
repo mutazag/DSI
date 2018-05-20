@@ -71,12 +71,26 @@ meetings$DurationMin <- as.numeric(difftime(meetings$End, meetings$Start, units 
 # outliers are found as events that are longer than 24 hrs (1440 mins), outliers
 # will be removed
 summary(meetings$DurationMin)
-hist(meetings$DurationMin)
+meetings %>% ggplot(aes(DurationMin)) + 
+  geom_bar() +
+  theme(axis.text.x = element_text(angle=90)) +
+  theme_minimal() +
+  labs(title = "Calendar Event Durations", 
+       # subtitle ="group by User", 
+       x = "Duration (minutes)"
+  )
+
+# hist(meetings$DurationMin, breaks =100, main = "Meeting Durations", xlab = "Duration (minutes)", )
 
 meetings %>% ggplot(aes(x=day(Start), y=DurationMin, colour =DurationMin)) +
   geom_point(position="jitter") + 
-  scale_x_continuous(breaks = 1:30)#, labels = 1:30, minor_breaks = NULL)
-
+  scale_x_continuous(breaks = 1:30) + 
+  scale_y_log10(breaks = c(0,30,120,180,360,500,1000,1500)) + #, labels = 1:30, minor_breaks = NULL)
+  labs(title = "Calendar Event Durations", 
+       # subtitle ="group by User", 
+       x = "April 2018",
+       y = "Duration in minutes (log scale)"
+  )
 meetings <- meetings %>% filter(!DurationMin >= 1440)
 hist(meetings$DurationMin)
 # noticed events with duration > 300 
@@ -111,7 +125,7 @@ meetings$WeekDay
 meetings$Day
 hist(meetings$Day)
 
-ggplot(meetings, aes(x=WeekDay)) + geom_bar() + scale_fill_discrete(drop=FALSE) + scale_x_discrete(drop=FALSE)
+ggplot(meetings, aes(x=WeekDay, y=DurationMin)) + geom_boxplot() + scale_fill_discrete(drop=FALSE) + scale_x_discrete(drop=FALSE)
 
 
 # meeting over days of month 
@@ -143,7 +157,9 @@ meetings %>% group_by(Day, WeekDay) %>%
 
 meetings_summary %>% 
   ggplot(aes(x=WeekDay, y=PctTimeInMeetings)) + 
-  geom_boxplot()
+  geom_boxplot() +
+  stat_summary(fun.y=mean, geom="point", shape=18, size=3) 
+  
   geom_bar(stat="identity")
 
 
