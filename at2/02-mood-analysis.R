@@ -42,3 +42,5 @@ mood %>% ggplot(aes(x=date, fill=userid)) +
        y = 'Number of Entries', 
        fill = "User"
   )
+
+  

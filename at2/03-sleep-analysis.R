@@ -95,7 +95,7 @@ df %>% ggplot(aes(x = wake.up, fill=userid)) +
         y = "Number of records", 
         fill = "User")+theme_minimal()
 
-boxplot(df_gotobed$go.to.bed)
+
 
 ## most of the recorded sleep sessions sarted at 20:00, some users went to sleep
 ## as late as 3 and 4 am, will be interesting if there was any special reason
@@ -152,3 +152,28 @@ df %>% filter(userid==6, go.to.bed == 4)
 
 #### save summary sleep data ####
  write_csv(df, "./sleep_summary.csv")
+
+#### group nightsleep together ####
+df %>% filter(night.sleep==TRUE) %>% 
+  group_by(userid, day) %>% 
+  summarise(start=min(start),
+            end=max(end),
+            slp.quality=mean(slp.quality), 
+            time.in.bed=sum(time.in.bed), 
+            go.to.bed=hour(start),
+            wake.up=hour(end),
+            WeekDay=first(WeekDay)) -> df2
+
+write_csv(df2, "./sleep_adj.csv")
+# ###
+# 
+# this
+# 
+# 
+# 1 5      2018-04-02 21:00:00 2018-04-03 04:07:00        0.59         426 2018-04-03        21       4
+# 2 5      2018-04-03 04:08:00 2018-04-03 05:55:00        0.13         107 2018-04-03         4       5
+# 
+# 
+# became this 
+# 
+# 5      2018-04-03 2018-04-02 21:00:00 2018-04-03 05:55:00        0.36         533        21       5

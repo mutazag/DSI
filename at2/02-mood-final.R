@@ -33,25 +33,53 @@ mood <- read_csv("./mood_clean.csv",
 
 #### find duplicates ####
 
-mood %>% select(userid, date) %>% duplicated() -> mood_dupe
+mood %>% select(userid, date,mood,time) %>% duplicated() -> mood_dupe
+mood <- mood[-mood_dupe,]
 
-mood %>% 
+
+#### handle multoke entried per day by summarising mood using leichhardt scale ####
+mood.adj <- mood %>% mutate( mood.score = case_when(
+  mood == 'awful' ~ 1,
+  mood == 'bad' ~ 2, 
+  mood == 'meh' ~ 3, 
+  mood == 'good' ~ 4, 
+  mood == 'rad' ~ 5
+))
+
+
+
+mood.adj %>% 
   group_by(userid, date) %>% 
   summarise(N = n(), 
-            sentiment.score = mean(sentiment.score))
-# 16 groups of duplicates 
+            sentiment.score = mean(sentiment.score),
+            mood.mean = mean(mood.score),
+            mood.rounded =   round(mood.mean,0),
+            mood = case_when(
+              round(mood.mean,0) == 1 ~ 'awful',
+              round(mood.mean,0) == 2 ~ 'bad',
+              round(mood.mean,0) == 3 ~ 'meh',
+              round(mood.mean,0) == 4 ~ 'good',
+              round(mood.mean,0) == 5 ~ 'rad'
+              
+            )) -> mood.adj
 
 
-#### what to do with duplicates ? #### 
+write_csv(mood.adj, "./mood_adj.csv")
 
+mood.adj %>% filter(userid==1) %>% 
+  ggplot(aes(x=date, y=mood.rounded)) + 
+  geom_bar(stat = "identity") +
+  scale_x_date(date_breaks = "1 day", 
+               date_labels = "%b %d", 
+               expand = c(0,0), 
+               minor_breaks = NULL)  +
+  scale_y_continuous(minor_breaks = NULL) +
+  theme(axis.text.x = element_text(angle=90)) + 
+  labs(title = "Mood Entries by Day", 
+       
+       x = 'Day', 
+       y = 'Number of Entries', 
+       fill = "User"
+  )
 
-## summarise mood by user by day 
-# example 
-# day 1, user 1 
-# rad = 2
-# good = 4
-# rad.score -> 2 / 6 = .33
-# good.score -> 4/6 = .33
-# <mood> = count how many times a mood was record in a day  
-# <mood>.score = <mood> / sum(<mood>s) 
 
