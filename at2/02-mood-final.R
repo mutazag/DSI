@@ -8,6 +8,7 @@ library(readr)
 library(dplyr)
 library(lubridate)
 library(ggplot2)
+library(scales)
 
 
 day_names <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")

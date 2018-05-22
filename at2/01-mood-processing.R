@@ -72,19 +72,53 @@ mood_summary %>% ggplot(aes(x=mood, y=N, fill=sentiment)) + geom_bar(stat="ident
 # mood_summary %>% ggplot(aes(x=mood, y=sentiment,fill=N)) + geom_bar(stat="identity") +
 #   scale_fill_gradientn(colors = rainbow(5))
 # 
+
+#### mood sentitment mean box plot ####
+
+
+ggplot(aes(x=WeekDay, y=slp.quality, fill=slp.quality.weekday.mean)) + 
+  geom_boxplot() +
+  stat_summary(fun.y=mean, geom="point", shape=5, size=4) +
+  labs( title = "What is the sleep quality over the week days?", 
+        subtitle = "Night sleep only",
+        x = "Day of Week", 
+        y = "Sleep Quality", 
+        fill = "Avg Sleep Quality")+theme_minimal() +
+  scale_fill_gradient(low = "red",high = "green") + 
+  scale_y_continuous(labels = scales::percent)
+
 mood <- mood %>% 
   arrange(mood) %>%
   group_by(mood) %>%
   mutate(sentiment.mean = mean(sentiment.score))
 
+mood_sentimentmean <- function(mood){
+  mood %>% 
+    ggplot(aes(x=mood, y=sentiment.score, fill=sentiment.mean)) +
+    geom_boxplot() + theme_minimal() + 
+    scale_fill_gradientn(colors = rainbow(5)) + 
+    stat_summary(fun.y=mean, geom="point", shape="O", size=4) + 
+    scale_y_continuous(labels = scales::percent) +
+    labs( title = "Does the sentiment in the notes match the users' mood?", 
+          x = "Mood", 
+          y = "Sentiment", 
+          fill = "Avg Sentiment") -> p
+  
+  return(p)
+}
 
-mood %>% 
-  ggplot(aes(x=mood, y=sentiment.score, fill=sentiment.mean)) +
-  geom_boxplot() +
-  scale_fill_gradientn(colors = rainbow(5)) + 
-  stat_summary(fun.y=mean, geom="point", shape=5, size=4)
 
 
+mood %>% mood_sentimentmean() + 
+  labs(caption = "group data")
+
+mood %>% filter(userid==6) %>% 
+  mood_sentimentmean() + 
+  labs(caption = "personal data")
+
+
+
+#### word clouds ####
 # mood_summary %>% ggplot(aes(x=mood, y=sentiment, fill=sentiment)) + 
 #   geom_text(aes(label=N),hjust=0, vjust=-2)+ # label text is confisusing 
 #   scale_y_continuous(breaks = 0:1, limits = 0:1) +

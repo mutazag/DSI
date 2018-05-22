@@ -3,7 +3,7 @@
 
 setwd("C:/mdsi/dsi/at2")
 
-
+library(ggplot2)
 library(readr)
 library(dplyr)
 library(lubridate)
@@ -36,7 +36,7 @@ sleep_summary <- df %>%
 
 
 
-range(sleep_summary$day)
+
 df %>% ggplot(aes(x=day, fill=userid)) + 
   geom_bar() +
   scale_x_date(date_breaks = "1 day", 
@@ -121,7 +121,8 @@ df %>%
         x = "Day of Week", 
         y = "Sleep Quality", 
         fill = "Avg Sleep Quality")+theme_minimal() +
-  scale_fill_gradient(low = "red",high = "green")
+  scale_fill_gradient(low = "red",high = "green") + 
+  scale_y_continuous(labels = scales::percent)
 
 
 
@@ -132,10 +133,10 @@ df %>%
   ggplot(aes(x=factor(userid), y=time.in.bed, fill=slp.quality.weekday.mean)) + 
   geom_boxplot() +
   stat_summary(fun.y=mean, geom="point", shape=5, size=4) +
-  labs( title = "What is the sleep quality over the week days?", 
+  labs( title = "userid over time.in.bed", 
         subtitle = "Night sleep only",
-        x = "Week day", 
-        y = "Sleep Quality", 
+        x = "USer ID", 
+        y = "time in bed", 
         fill = "Avg Sleep Quality")+theme_minimal() +
   scale_fill_gradient(low = "red",high = "green")
 
